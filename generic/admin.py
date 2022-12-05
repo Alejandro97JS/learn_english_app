@@ -16,3 +16,10 @@ class LabelAdmin(admin.ModelAdmin):
     search_fields = ["name", "name_spanish", "description", "description_spanish"]
     date_hierarchy = "created_at"
     readonly_fields = ["created_at"]
+
+@admin.register(m.Example)
+class ExampleAdmin(admin.ModelAdmin):
+    list_display = ["text"]
+    search_fields = ["text", "text_spanish"]
+    date_hierarchy = "created_at"
+    readonly_fields = ["created_at"]

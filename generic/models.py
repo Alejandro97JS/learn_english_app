@@ -23,6 +23,14 @@ class Label(models.Model):
     def __str__(self):
         return self.name
 
+class Example(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    text = models.TextField()
+    text_spanish = models.TextField(null = True, blank = True, default = None)
+
+    def __str__(self):
+        return self.text
+
 class LanguageStyle(models.TextChoices):
     VERY_FORMAL = "VF", _("Very Formal")
     FORMAL = "F", _("Formal")

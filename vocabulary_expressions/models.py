@@ -1,6 +1,6 @@
 from django.db import models
 
-from generic.models import CategoryLabel, Label, LanguageStyle
+from generic.models import CategoryLabel, Label, LanguageStyle, Example
 
 # Create your models here.
 class Entry(models.Model):
@@ -14,6 +14,7 @@ class Entry(models.Model):
     labels = models.ManyToManyField(Label, blank = True)
     language_style = models.CharField(max_length=2, choices=LanguageStyle.choices,
         default=LanguageStyle.NOT_SPECIFIED)
+    examples = models.ManyToManyField(Example, blank = True)
 
     def __str__(self):
         return self.title
