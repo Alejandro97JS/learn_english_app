@@ -10,7 +10,10 @@ class Entry(models.Model):
     description = models.TextField(null = True, blank = True, default = None)
     spanish_description = models.TextField(null = True, blank = True, default = None)
     pronunciation_notes = models.TextField(null = True, blank = True, default = None)
-    category_labels = models.ManyToManyField(CategoryLabel)
-    labels = models.ManyToManyField(Label)
+    category_labels = models.ManyToManyField(CategoryLabel, blank = True)
+    labels = models.ManyToManyField(Label, blank = True)
     language_style = models.CharField(max_length=2, choices=LanguageStyle.choices,
         default=LanguageStyle.NOT_SPECIFIED)
+
+    def __str__(self):
+        return self.title

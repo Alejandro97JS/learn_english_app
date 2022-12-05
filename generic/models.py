@@ -10,12 +10,18 @@ class CategoryLabel(models.Model):
     description = models.TextField(null = True, blank = True, default = None)
     description_spanish = models.TextField(null = True, blank = True, default = None)
 
+    def __str__(self):
+        return self.name
+
 class Label(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     name = models.TextField()
     name_spanish = models.TextField(null = True, blank = True, default = None)
     description = models.TextField(null = True, blank = True, default = None)
     description_spanish = models.TextField(null = True, blank = True, default = None)
+
+    def __str__(self):
+        return self.name
 
 class LanguageStyle(models.TextChoices):
     VERY_FORMAL = "VF", _("Very Formal")
