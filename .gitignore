@@ -130,3 +130,6 @@ dmypy.json
 
 # Script to clean DB and migrations:
 reset_db.py
+
+# Media folder:
+media/

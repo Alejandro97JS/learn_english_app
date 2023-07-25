@@ -21,6 +21,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("test", views.test, name="test"),
+    path("generate_pdf/", include("pdf_generator.urls"))
     # path("vocabulary_and_expressions", include("vocabulary_expressions.urls")),
     # path("generic", include("generic.urls"))
 ]
