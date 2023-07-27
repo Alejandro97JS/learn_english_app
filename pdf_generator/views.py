@@ -18,7 +18,7 @@ def generate_vocabulary_pdf(request):
     pdf.set_font(
         **constants.TITLE_FONT
     )
-    pdf.cell(0, constants.PDF_HEIGHT,
+    pdf.cell(0, constants.PDF_CELL_TITLE_HEIGHT,
         constants.VOCABULARY_EXPRESSIONS_TITLE, ln=constants.PDF_LN)
     # For each entry, add the formatted content to the PDF:
     for index, vocabulary_entry in enumerate(vocabulary_entries):

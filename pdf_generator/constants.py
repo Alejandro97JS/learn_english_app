@@ -13,12 +13,9 @@ DATETIME_FILE_FORMAT = "%Y%m%d_%H%M%S"
 
 # Configuration parameters for fpdf library:
 
-PDF_WIDTH = 40
-PDF_HEIGHT = 10
 PDF_LN = 1
-
-PDF_WRITE_WIDTH = 5
-PDF_WRITE_HEIGHT = 10
+PDF_CELL_TITLE_HEIGHT = 10
+PDF_CELL_WRITE_HEIGHT = 10
 
 FAMILY_ARIAL = "Arial"
 
