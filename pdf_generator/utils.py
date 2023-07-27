@@ -57,5 +57,4 @@ def write_simple(pdf, text, font = None):
     # writing.
     if font is not None:
         pdf.set_font(**font)
-    pdf.cell(constants.PDF_WRITE_WIDTH,
-        constants.PDF_WRITE_HEIGHT, text, ln=constants.PDF_LN)
+    pdf.multi_cell(0, constants.PDF_WRITE_HEIGHT, text)
