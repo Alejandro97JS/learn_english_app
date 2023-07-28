@@ -17,8 +17,7 @@ def append_vocabulary_entry_to_doc(pdf, index, vocabulary_entry):
         write_simple(pdf, labels_text, constants.DEFAULT_FONT)
     # Language style (if specified):
     if vocabulary_entry.language_style != LanguageStyle.NOT_SPECIFIED:
-        language_style_text = constants.LANGUAGE_STYLE_HEADER_TEXT + str(
-            vocabulary_entry.language_style)
+        language_style_text = constants.LANGUAGE_STYLE_HEADER_TEXT + vocabulary_entry.language_style_readable
         write_simple(pdf, language_style_text, constants.DEFAULT_FONT)
     # Pronunciation notes (if exists):
     pronunciation_notes = vocabulary_entry.pronunciation_notes

@@ -18,3 +18,8 @@ class Entry(models.Model):
 
     def __str__(self):
         return self.title
+    
+    @property
+    def language_style_readable(self):
+        return LanguageStyle(self.language_style).label
+    
