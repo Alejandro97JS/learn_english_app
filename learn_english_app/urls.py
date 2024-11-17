@@ -22,6 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("test", views.test, name="test"),
     path("generic/", include("generic.urls")),
-    path("generate_pdf/", include("pdf_generator.urls"))
+    path("pdf_generation/", include("pdf_generator.urls"))
     # path("vocabulary_and_expressions", include("vocabulary_expressions.urls")),
 ]
