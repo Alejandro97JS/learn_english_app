@@ -1,5 +1,5 @@
 import os
-from datetime import datetime
+import datetime
 from fpdf import FPDF
 
 from django.conf import settings
@@ -32,7 +32,7 @@ def generate_vocabulary_pdf(request):
     if not os.path.exists(generated_pdfs_path):
         os.mkdir(generated_pdfs_path)
     # Save the file, whose name has a timestamp:
-    now = datetime.utcnow()
+    now = datetime.datetime.now(datetime.timezone.utc)
     filename = constants.VOCABULARY_PDF_FILE_NAME.format(
         now.strftime(constants.DATETIME_FILE_FORMAT)
     )
