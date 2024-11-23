@@ -10,8 +10,29 @@ from . import utils, constants
 
 def generate_vocabulary_pdf(request):
     # DB to PDF:
-    # Get all vocabulary entries from DB:
+    # Get potential filters to apply:
+    # 1 - Category label name:
+    category_label_names = request.GET.get("category_label_names")
+    # 2 - Label Name:
+    label_names = request.GET.get("label_names")
+    # 3 - Language style:
+    language_styles = request.GET.get("language_styles")
+    # 4 - Date from:
+    date_from = request.GET.get("date_from")
+    # Get vocabulary entries from DB:
     vocabulary_entries = VocabularyEntry.objects.all()
+    if category_label_names:
+        vocabulary_entries = vocabulary_entries.filter(
+            category_labels__name__in=category_label_names.split(",")).distinct()
+    if label_names:
+        vocabulary_entries = vocabulary_entries.filter(
+            labels__name__in=label_names.split(",")).distinct()
+    if language_styles:
+        vocabulary_entries = vocabulary_entries.filter(
+            language_style__in=language_styles.split(","))
+    if date_from:
+        vocabulary_entries = vocabulary_entries.filter(
+            created_at__gte=datetime.datetime.strptime(date_from,"%Y-%m-%d"))
     # Create PDF using fpdf library:
     pdf = FPDF()
     pdf.add_page()
