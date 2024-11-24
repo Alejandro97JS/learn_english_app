@@ -20,11 +20,18 @@ PDF_CELL_WRITE_HEIGHT = 10
 FAMILY_ARIAL = "Arial"
 
 STYLE_B = "B"
+STYLE_I = "I"
 
 DEFAULT_FONT = {
     "family": FAMILY_ARIAL,
     "style": "",
     "size": 12
+}
+
+ANNOTATION_FONT = {
+    "family": FAMILY_ARIAL,
+    "style": STYLE_I,
+    "size": 10
 }
 
 TITLE_FONT = {

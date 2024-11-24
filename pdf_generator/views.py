@@ -21,21 +21,34 @@ def generate_vocabulary_pdf(request):
     date_from = request.GET.get("date_from")
     # Get vocabulary entries from DB:
     vocabulary_entries = VocabularyEntry.objects.all()
+    active_filters_text = ""
     if category_label_names:
         vocabulary_entries = vocabulary_entries.filter(
             category_labels__name__in=category_label_names.split(",")).distinct()
+        active_filters_text += f"- Categories: {category_label_names.replace(",", ", ")}\n"
     if label_names:
         vocabulary_entries = vocabulary_entries.filter(
             labels__name__in=label_names.split(",")).distinct()
+        active_filters_text += f"- Labels: {label_names.replace(",", ", ")}\n"
     if language_styles:
         vocabulary_entries = vocabulary_entries.filter(
             language_style__in=language_styles.split(","))
+        active_filters_text += f"- Language styles: {language_styles}\n"
     if date_from:
         vocabulary_entries = vocabulary_entries.filter(
             created_at__gte=datetime.datetime.strptime(date_from,"%Y-%m-%d"))
+        active_filters_text += f"- Entries from: {date_from}\n"
     # Create PDF using fpdf library:
     pdf = FPDF()
     pdf.add_page()
+    pdf.set_font(
+        **constants.ANNOTATION_FONT
+    )
+    utils.write_simple(pdf, "PDF generated at "
+        f"{datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S")} UTC")
+    # Write an annotation of active filters in PDF:
+    if active_filters_text:
+        utils.write_simple(pdf, "Applied filters:\n" + active_filters_text)
     pdf.set_font(
         **constants.TITLE_FONT
     )
